@@ -1,15 +1,13 @@
 <html>
     <head>
         <script>
-
             var arrHead = new Array();
             arrHead = ['Task', 'Due Date', '', '']; // table headers.
 
-            // first create a TABLE structure by adding few headers.
-            function createTable() {
+            window.onload = function() {
+                //create a table
                 var taskTable = document.createElement('table');
                 taskTable.setAttribute('id', 'taskTable');  // table id.
-
                 var tr = taskTable.insertRow(-1);
 
                 for (var h = 0; h < arrHead.length; h++) {
@@ -20,46 +18,42 @@
 
                 var div = document.getElementById('cont');
                 div.appendChild(taskTable);    // add table to a container.
+
             }
 
             // function to add new row.
             function addRow() {
 
                 var taskTab = document.getElementById('taskTable');
-
                 var rowCnt = taskTab.rows.length;    // get the number of rows.
                 var tr = taskTab.insertRow(rowCnt); // table row.
                 //tr = taskTab.insertRow(rowCnt);
 
                 for (var c = 0; c < arrHead.length; c++) {
-                    var td = document.createElement('td');          // TABLE DEFINITION.
+                    var td = document.createElement('td');
                     td = tr.insertCell(c);
 
                     switch (c) {
+
                         case arrHead.length - 1:
                             // add a button control.
                             var button = document.createElement('input');
-
                             // set the attributes.
                             button.setAttribute('type', 'button');
                             button.setAttribute('value', 'Remove');
-
                             // add button's "onclick" event.
                             button.setAttribute('onclick', 'removeRow(this)');
-
                             td.appendChild(button);
                             break;
+
                         case arrHead.length - 2:
                             // add a button control.
                             var button = document.createElement('input');
-
                             // set the attributes.
                             button.setAttribute('type', 'button');
                             button.setAttribute('value', 'Edit');
-
                             // add button's "onclick" event.
                             button.setAttribute('onclick', 'editRow(this)');
-
                             td.appendChild(button);
                             break;
 
@@ -90,7 +84,7 @@
         </script>
     </head>
 
-    <body onload="createTable()">
+    <body>
 
         <label for="taskname">Task:</label>
         <input type="text" id="tname" name="tname" value="task..."><br>
